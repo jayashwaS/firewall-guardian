@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Firewall Guardian — A cybersecurity defense game where you play as a SOC analyst defending against a live cyberattack.">
+    <title>Firewall Guardian — Cybersecurity Defense Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+</head>
+
+<body>
+    <!-- Font preloaders -->
+    <div class="font-preload">Orbitron</div>
+    <div class="font-preload-mono">Share Tech Mono</div>
+
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Scripts (order matters — dependencies first) -->
+    <script src="js/config.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/network.js"></script>
+    <script src="js/threats.js"></script>
+    <script src="js/defense.js"></script>
+    <script src="js/hud.js"></script>
+    <script src="js/traffic.js"></script>
+    <script src="js/alerts.js"></script>
+    <script src="js/story.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

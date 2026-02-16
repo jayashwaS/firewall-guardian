@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            background: #333;
+        }
+
+        #container {
+            position: relative;
+            display: inline-block;
+        }
+
+        img {
+            display: block;
+            max-width: none;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <img id="sprite" src="assets/sprites.png" onload="drawGrid()">
+        <canvas id="grid"></canvas>
+    </div>
+    <script>
+        function drawGrid() {
+            const img = document.getElementById('sprite');
+            const cvs = document.getElementById('grid');
+            cvs.width = img.width;
+            cvs.height = img.height;
+            const ctx = cvs.getContext('2d');
+
+            // Draw detailed grid
+            ctx.strokeStyle = 'rgba(255, 0, 255, 0.5)';
+            ctx.lineWidth = 1;
+
+            // 32px grid
+            ctx.beginPath();
+            for (let x = 0; x <= img.width; x += 32) { ctx.moveTo(x, 0); ctx.lineTo(x, img.height); }
+            for (let y = 0; y <= img.height; y += 32) { ctx.moveTo(0, y); ctx.lineTo(img.width, y); }
+            ctx.stroke();
+
+            // 128px major grid
+            ctx.strokeStyle = 'rgba(0, 255, 255, 0.8)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            for (let x = 0; x <= img.width; x += 128) { ctx.moveTo(x, 0); ctx.lineTo(x, img.height); }
+            for (let y = 0; y <= img.height; y += 128) { ctx.moveTo(0, y); ctx.lineTo(img.width, y); }
+            ctx.stroke();
+
+            // Log dimensions
+            console.log('Image dimensions:', img.width, 'x', img.height);
+
+            // Add coordinate labels every 128px
+            ctx.fillStyle = 'yellow';
+            ctx.font = '12px monospace';
+            for (let x = 0; x < img.width; x += 128) {
+                for (let y = 0; y < img.height; y += 128) {
+                    ctx.fillText(`${x},${y}`, x + 2, y + 12);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
